@@ -2,6 +2,9 @@
 PASO #6 COMO ACTUALIZAR Y COLOCAR WHITELIST, CAPTCHA A LA CANDY MACHINE V2
 ===========================================================================
 
+Versiones de Node utilizadas
+16.13.2
+
 // Abrimos nuestro archivo *config.json* y vamos a agregar lo siguiente.
 
 // Colocamos para usar Captcha a la hora de clickear el boton de mint

@@ -2,6 +2,9 @@
 PASO #4 CREAR DISTRIBUCION DEL TOKEN CON GUMDROP
 =================================================
 
+Versiones de Node utilizadas
+16.13.2
+
 // Creamos un archivo JSON en nuestra carpeta principal y colocamos el siguiente formato
 
 [

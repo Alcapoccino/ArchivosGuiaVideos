@@ -2,6 +2,9 @@
 PASO #3 CREAR SPL-TOKEN SUBIENDO LOGO Y METADATA
 ================================================
 
+Versiones de Node utilizadas
+16.13.2
+
 // Usamos para apuntar a la Red DevNet o Mainnet de Solana
 _solana config set --url https://api.devnet.solana.com_
 _solana config set --url https://api.mainnet-beta.solana.com_
