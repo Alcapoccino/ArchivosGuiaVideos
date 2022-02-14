@@ -1,0 +1,38 @@
+=========================================================
+PASO #5 CREAR Y EDITAR PAGINA PARA MINTEAR PERSONALIZADA
+=========================================================
+
+// Lo primero es clonar el repositorio directamente en Vercel y correr una APP
+*https://github.com/Fulgurus/candy-machine-v2-responsive-ui* --> *https://vercel.com/dashboard*
+
+// Luego de eso vamos a clonar el repositorio desde nuestro github y clonarlo en la carpeta de _metaplex_
+_git clone https://github.com/M1gu3l4ngel/eskeletomintui_
+
+// Nos vamos a la carpeta que se clono _eskeletomintui_
+_cd eskeletomintui_
+
+// Instalamos yarn ---> Si ocurre un problema usamos yarn install --network-timeout 500000
+_yarn install_
+
+// Una vez finalizado el yarn, copiamos nuestro _Candy Machine ID_ ubicado en _.cache_ y pegamos en _eskeletonmintui/.env_
+
+// Usamos para abrir y probar la Web en el LocalHost
+_yarn start_
+
+// Para darle vida a la página debemos dirigirnos a _eskeletonmintui/src/App.css_ aqui podremos editar los colores de nuestra web
+
+// Luego podemos editar el contenido de nuestra dirigiendonos a _eskeletonmintui/src/Home.tsx_
+
+// En el archivo _App.css_ podemos editar _Colores y Letras a nuestro modo_
+
+// En el archivo _Home.tsx_ podemos editar _Logos, contenido, menu entre otras cosas_
+
+// En el archivo _Index.html_ podemos editar _Favicon Web, logo de Wallet, Nombre de Wallet_
+
+// Recordar poner nuestras imagenes en la carpeta _Public_
+
+// Para darle color a los enlaces ir a _App.css_ y agregar el siguiente comando
+
+a{
+color: white; text-decoration: none;
+}

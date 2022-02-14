@@ -1,0 +1,28 @@
+=================================================
+PASO #4 CREAR DISTRIBUCION DEL TOKEN CON GUMDROP
+=================================================
+
+// Creamos un archivo JSON en nuestra carpeta principal y colocamos el siguiente formato
+
+[
+{
+"handle": "6JYNfUjRhMvRXuSsB4LCgJiqpfUgU7EssMvopmQeXazc",
+"amount": 100
+},
+{
+"handle": "DLYjSB1KdVuN24RN3sSVbQ6xy9E1fbfAu5GLw39DTyU8",
+"amount": 50
+},
+{
+"handle": "CkGd4yEjjLpYXa4WazLbNXqVwv7ZVV5zdbukc1ttnY7p",
+"amount": 20
+}
+]
+
+// Se usa para ver la informacion de Gumdrop
+_ts-node ./js/packages/cli/src/gumdrop-cli.ts create --help_
+
+// Usamos para crear el Gumdrop
+_ts-node ./js/packages/cli/src/gumdrop-cli.ts create --transfer-mint TU_TOKEN_ID -k ./TU_PATH_TOKEN.json --claim-integration transfer --distribution-method wallets --distribution-list ./NOMBRE_ARCHIVO_WHITELIST.json_
+
+_ts-node ./js/packages/cli/src/gumdrop-cli.ts create --transfer-mint 6maCbcULRa2aZwPq5pjJ544FBgypxUHfAMb4MRVDQkFJ -k ./eskeletostoken.json --claim-integration transfer --distribution-method wallets --distribution-list ./whitelistt.json_

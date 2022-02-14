@@ -1,0 +1,102 @@
+================================================
+PASO #3 CREAR SPL-TOKEN SUBIENDO LOGO Y METADATA
+================================================
+
+// Usamos para apuntar a la Red DevNet o Mainnet de Solana
+_solana config set --url https://api.devnet.solana.com_
+_solana config set --url https://api.mainnet-beta.solana.com_
+
+// Creamos una nueva Billetera en DevNet
+_solana-keygen new --outfile ./NOMBREAQUI.json_
+
+// Guardamos la llave y frase de seguridad de nuestra Billetera
+_Wrote new keypair to ./NOMBREAQUI.json_
+=================================================================================
+pubkey: HnRThq25rBaJooPmn9yuKNcSEjkGPq9bckkosLbwuYhk
+=================================================================================
+Save this seed phrase and your BIP39 passphrase to recover your new keypair:
+rotate practice divorce armor photo rich follow silent bone giraffe twenty animal
+=================================================================================
+
+// Usamos para apuntar a la DevNet o Mainnet con la billetera creada
+_solana config set --keypair ./NOMBREAQUI.json_
+
+// Copiamos nuestra Wallet generarada en _./NOMBREAQUI.json_ y nos logeamos en _Phantom Wallet_ en Google Chrome
+_Ejemplo_
+200,234,181,56,223,198,132,177,31,88,11,181,135,58,241,20,172,226,38,71,185,51,91,31,240,23,41,18,235,33,37,
+126,52,202,244,16,229,171,107,97,124,62,196,188,106,33,204,7,147,181,160,39,251,126,131,69,92,33,97,40,214,189,207,157
+
+// Usamos para ver el balance de la billetera creada
+_solana balance_
+
+// Usamos para solicitar Monedas de Solana en nuestra billetera creada
+_solana airdrop 2_
+
+// Instalamos _spl-token_ en la carpeta de _metaplex_ -> A veces da un error pero no pasa nada
+_cargo install spl-token-cli_
+
+// Crear el Token
+_spl-token create-token --decimals 0_
+
+// Recordar copiar el token ID en un archivo de info
+_Ejemplo_
+_Creating token 3pJugWwLcuo3g95nrDC7ijTdWdAKcyfq2kwEpa5CWVBK_
+
+// Crear una cuenta
+_spl-token create-account COLOCAR_TOKEN_ID_
+
+// Recordar copiar el token de la cuenta en un archivo de info
+_Ejemplo_
+Creating account _JDTot9qSosXGpDRA47rBnv6HzGt8Ugj5EjFj6PSyLuLx_
+
+// Mintear los tokens
+_spl-token mint COLOCAR_TOKEN_ID 5000000 COLOCAR_TOKEN_ACCOUNT_
+
+// Deshabilitar la funcion de mintear mas tokens
+_spl-token authorize COLOCAR_TOKEN_ID mint --disable_
+
+// Clonamos el siguiente repositorio en la carpeta de _metaplex_
+_git clone https://github.com/solana-labs/token-list_
+
+// Creamos una carpeta en el escritorio con el nombre del _TOKEN_ID_ y la imagen de nuestro logo con el nombre de _logo.png_ y la pegamos en la carpeta _token-list/assets/mainnet_
+
+// Nos paramos en la carpeta _src/token_ y abrimos _solana.tokenlist.json_ y elegimos cualquier token que nos guste lo copiamos y pegamos en un hueco de la misma carpeta y lo editamos al terminar _NO OLVIDAR GUARDAR_
+
+- {
+  "chainId": 101,
+  "address": "COLOCAR_TOKEN_ID",
+  "symbol": "COLOCAR_SIMBOLO_TOKEN",
+  "name": "COLOCAR_NOMBRE_TOKEN",
+  "decimals": 0,
+  "logoURI": "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/COLOCAR_TOKEN_ID/logo.jpg",
+  "extensions": {
+  "discord": "https://discord.gg/COLOCAR_DISCORD",
+  "twitter": "https://twitter.com/COLOCAR_TWITTER",
+  "website": "https://COLOCAR_TU_WEBSITE"
+  }
+  },
+-
+
+// Luego vamos a ir a realizar el FORK, para realizar el FORK hay que ir a GitHub -> *https://github.com/solana-labs/token-list* y click en el botón _FORK_
+
+// Cambiamos de directorio
+_cd token-list_
+
+// Ejecutamos
+_git remote set-url origin COLOCAR*URL_DEL_FORK*_ te lo da despues del FORK
+
+// Ejecutamos
+_git add ._
+
+// Ejecutamos
+_git commit -m "first commit for SIMBOLO_TOKEN & NOMBRE_TOKEN"_
+
+// Ejecutamos --> En dado caso de error ejecutamos _git push origin main --force/_
+_git push origin main_
+
+// Volvemos a la pagina de GitHub, verificamos que todo este en verde y click en el boton _NEW PULL REQUEST_ y click en _compare across fork_
+// luego _head repository_ y buscamos nuestro usuario verificamos que todo este correcto y pulsamos _CREATE PULL REQUEST_ y confirmamos
+// verificamos en _solscan.com_ que todo este bien con el token y esperar unos dias que se actualice
+
+// Actualizar la Candy Machine si configuramos el _config.json_
+_ts-node ./js/packages/cli/src/candy-machine-v2-cli.ts update_candy_machine -e devnet -k ./pandas.json -cp config.json -c cache ./assets_

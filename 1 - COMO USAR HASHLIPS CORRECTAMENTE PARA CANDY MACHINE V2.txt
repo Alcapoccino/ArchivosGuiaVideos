@@ -1,0 +1,28 @@
+==============================
+PASO #1 HASHLIPS NFT GENERATOR
+==============================
+
+Versiones de Node utilizadas
+16.13.2
+
+// Se usa al abrir la carpeta por primera vez
+_npm install_
+
+// Subir todas las carpetas con imagenes en _./haslips/layers_
+
+// Configurar el _json_ ubicado en la carpeta _./src/config.json_
+
+// Se usa al subir todas las imagenes en _./haslips/layers_ y tener configurado el _config.json_
+_npm run generate_
+
+// Se usa para crear imagenes pixeladas
+_npm run pixelate_
+
+// Se usa para generar imagen con todos los NFT
+_npm run preview_
+
+// Se usa para hacer un gif con todos los NFT
+_npm run preview_gif_
+
+// Se usa para ver la rareza de cada NFT
+_npm run rarity_

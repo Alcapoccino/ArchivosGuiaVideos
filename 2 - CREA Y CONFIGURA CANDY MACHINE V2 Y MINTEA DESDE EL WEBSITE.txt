@@ -1,0 +1,92 @@
+====================
+PASO #2 EN METAPLEX
+====================
+
+Versiones de Node utilizadas:
+16.13.2
+
+Crear una carpeta en _./haslips/build_ y que se llame _assets_ poner todas las imagenes generadas y luego poner la metadata.
+Luego vamos a copiar esta carpeta llamada _assets_ con imagenes y metadata y vamos a pegarla en la carpeta de _metaplex_
+
+Abrimos la carpeta de _metaplex_ en vscode
+
+// Entramos a la carpeta json
+_cd js_
+
+// Instalamos yarn ---> Si ocurre un problema usamos yarn install --network-timeout 500000
+_yarn install_
+
+// Tecleamos
+_yarn bootstrap_
+
+// Tecleamos
+_yarn build_
+
+Copiamos el ejemplo de _config.json_ y lo pegamos en la carpeta principal de _metaplex_ y configuramos nuestro json
+
+// Volvemos a la carpeta principal
+_cd .._
+
+// Usamos para apuntar a la DevNet o Mainnet con la billetera creada
+_solana config set --url https://api.mainnet-beta.solana.com_
+_solana config set --url https://api.devnet.solana.com_
+
+// Creamos una nueva Billetera en DevNet o Mainnet
+_solana-keygen new --outfile ./NOMBREAQUI.json_
+
+// Guardamos la llave y frase de seguridad de nuestra Billetera
+_Wrote new keypair to ./nftpanditas.json_
+=================================================================================
+pubkey: HnRThq25rBaJooPmn9yuKNcSEjkGPq9bckkosLbwuYhk
+=================================================================================
+Save this seed phrase and your BIP39 passphrase to recover your new keypair:
+rotate practice divorce armor photo rich follow silent bone giraffe twenty animal
+=================================================================================
+
+// Apuntamos a la billetera que creamos
+_solana config set --keypair ./NOMBREAQUI.json_
+
+// Copiamos nuestra Wallet generarada en _./NOMBREAQUI.json_ y nos logeamos en _Phantom Wallet_
+_Ejemplo_
+200,234,181,56,223,198,132,177,31,88,11,181,135,58,241,20,172,226,38,71,185,51,91,31,240,23,41,18,235,33,37,
+126,52,202,244,16,229,171,107,97,124,62,196,188,106,33,204,7,147,181,160,39,251,126,131,69,92,33,97,40,214,189,207,157
+
+// Usamos para apuntar a la DevNet o Mainnet con la billetera creada
+_solana config set --keypair ./NOMBREAQUI.json_
+
+// Usamos para ver el balance de la billetera creada
+_solana balance_
+
+// Usamos para solicitar Monedas de Solana en nuestra billetera creada
+_solana airdrop 2_
+
+_NOTA:_ Si no hemos subido la coleccion vamos a la carpeta _./hashlips/build_ copiamos la carpeta _assets_ con imagenes y metadata y pegamos en _metaplex_
+
+// Usamos para cargar nuestros NFT's, recordar modificar
+_ts-node ./js/packages/cli/src/candy-machine-v2-cli.ts upload -e devnet -k ./NOMBREAQUI.json -cp config.json -c cache ./assets_
+_ts-node ./js/packages/cli/src/candy-machine-v2-cli.ts upload -e mainnet-beta -k ./NOMBREAQUI.json -cp config.json -c cache ./assets_
+
+// Usamos para verificar nuestros NFT's
+_ts-node ./js/packages/cli/src/candy-machine-v2-cli.ts verify_upload -e devnet -k ./NOMBREAQUI.json -cp config.json -c cache ./assets_
+_ts-node ./js/packages/cli/src/candy-machine-v2-cli.ts verify_upload -e mainnet-beta -k ./NOMBREAQUI.json -cp config.json -c cache ./assets_
+
+// Lo usamos si queremos mintear _1 NFT_ desde comandos y no de Phantom  
+_ts-node ./js/packages/cli/src/candy-machine-v2-cli.ts mint_one_token -e devnet -k ./NOMBREAQUI.json -cp config.json -c cache ./assets_
+
+// Lo usamos si queremos mintear varios NFT's desde comandos
+_ts-node ./js/packages/cli/src/candy-machine-v2-cli.ts mint_multiple_tokens -e devnet -k ./NOMBREAQUI.json -cp -c cache --number CANTIDADAQUI_
+
+// Nos movemos a _./js/packages/candy-machine-ui_
+_cd ./js/packages/candy-machine-ui_
+
+// Instalamos yarn O npm
+_yarn install O npm install_
+
+// Abrimos la carpeta _.env_ ubica en _./js\packages\candy-machine-ui_ cambiamos su nombre a _.env_ y colocamos nuestro _CANDY ID_ ubicado en la carpeta _cache_
+_Ejemplo_
+REACT*APP_CANDY_MACHINE_ID=\_5JQLjkjoeiewW2zaZjtfL5m28sGfhzitGJhrALrnT728*
+REACT_APP_SOLANA_NETWORK=devnet
+REACT_APP_SOLANA_RPC_HOST=https://api.devnet.solana.com/
+
+// Usamos para abrir la Web en el LocalHost
+_yarn start_

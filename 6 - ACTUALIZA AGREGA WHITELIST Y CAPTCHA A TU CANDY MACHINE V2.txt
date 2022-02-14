@@ -1,0 +1,24 @@
+===========================================================================
+PASO #6 COMO ACTUALIZAR Y COLOCAR WHITELIST, CAPTCHA A LA CANDY MACHINE V2
+===========================================================================
+
+// Abrimos nuestro archivo *config.json* y vamos a agregar lo siguiente.
+
+// Colocamos para usar Captcha a la hora de clickear el boton de mint
+
+"gatekeeper": {
+    "gatekeeperNetwork": "ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6",
+    "expireOnUse": true
+  },
+
+  // Colocamos para usar Whitelist, en está ocasion necesitan nuestro token para mintear y nuestro token será quemado
+
+  "whitelistMintSettings": {
+    "mode": { "burnEveryTime": true },
+    "mint": "TU_TOKEN_ID",
+    "presale": true,
+    "discountPrice": 0.1
+  },
+
+  // Comando para actualizar la Candy Machine despues de haber modificado
+  *ts-node ./js/packages/cli/src/candy-machine-v2-cli.ts update_candy_machine -e devnet -k ./pandas.json -cp config.json -c cache ./assets*
