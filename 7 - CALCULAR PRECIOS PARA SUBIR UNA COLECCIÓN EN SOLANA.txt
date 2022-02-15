@@ -1,0 +1,6 @@
+============================================================
+PASO #7 COMO USAR LA FUNCIÓN WITHDRAW EN LA CANDY MACHINE V2
+============================================================
+
+// Simplemente desde nuestra carpeta del proyecto *metaplex* corremos el siguiente comando
+ts-node ./js/packages/cli/src/candy-machine-v2-cli.ts withdraw CANDY_MACHINE_ID -e devnet -k ./KEY_PAIR/PATH_AQUI.json
